@@ -1,0 +1,3 @@
+{
+  "app": "npx ts-node bin/advnetspec-cdk-sandbox.ts"
+}

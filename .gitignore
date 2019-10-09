@@ -1,0 +1,8 @@
+data/advnetspec-cdk-sandbox/*.js
+data/advnetspec-cdk-sandbox/!jest.config.js
+data/advnetspec-cdk-sandbox/*.d.ts
+data/advnetspec-cdk-sandbox/node_modules
+
+# CDK asset staging directory
+data/advnetspec-cdk-sandbox/.cdk.staging
+data/advnetspec-cdk-sandbox/cdk.out
