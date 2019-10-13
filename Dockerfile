@@ -1,8 +1,13 @@
 FROM alpine
 
-ENV AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
-ENV AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
-ENV AWS_DEFAULT_REGION $AWS_DEFAULT_REGION
+ARG AWS_ACCESS_KEY_ID
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+
+ARG AWS_SECRET_ACCESS_KEY
+ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+ARG AWS_DEFAULT_REGION
+ENV AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 
 RUN apk --no-cache update && \
     apk --no-cache add py3-setuptools && \
@@ -20,4 +25,7 @@ RUN mkdir /home/data
 RUN mkdir /home/data/advnetspec-cdk-sandbox
 WORKDIR /home/data/advnetspec-cdk-sandbox
 
-RUN cdk init --language typescript
+COPY ./data/advnetspec-cdk-sandbox/package.json /home/data/advnetspec-cdk-sandbox
+RUN npm install
+
+COPY ./data/advnetspec-cdk-sandbox /home/data/advnetspec-cdk-sandbox
